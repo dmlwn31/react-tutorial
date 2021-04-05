@@ -1,21 +1,20 @@
-import React from 'react';
-import './App.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import "./App.css";
+import PropTypes from "prop-types";
 
-
-function Movie({title, ranking, desc}){
+function Movie({ title, ranking, picture }) {
   console.log(typeof ranking);
-  return(
+  return (
     <div>
-      <h3>Favorit Movie is {title}</h3>
+      <h3>My Favorit Movie is {title}</h3>
       <p>Ranking : {ranking}</p>
-      <img src={picture} alt={id}
+      <img src={picture} alt={title} />
     </div>
   );
 }
 
-const arr = ['a', 'b', 'c', 'd'];
-// arr.map(function(elm){
+//const arr = ["a", "b", "c", "d"];
+// arr.map(function (elm) {
 //   console.log(elm);
 //   return 0;
 // });
@@ -56,27 +55,24 @@ const myMovies = [
 
 function App() {
   return (
-    <div className="App">
-     <h2>My Movie</h2>
-     {myMovies.map((movies) => {
-      
-     <Movie 
-       title={myMovies.title}
-       ranking={myMovies.ranking} 
-       picture={myMovies.images}
-       key={movies.id} 
-     /> 
-     })}
-     </div>
+    <div className='App'>
+      <h2>My Movie</h2>
+      {myMovies.map((movies) => (
+        <Movie
+          title={movies.title}
+          ranking={movies.ranking}
+          picture={movies.image}
+          key={movies.id}
+        />
+      ))}
+    </div>
   );
- }
-
-
- Movie.propTypes = {
-  title:PropTypes.string.isRequired,
-  desc:PropTypes.string.isRequired,
-  rating:PropTypes.number.isRequired,
 }
 
+Movie.propTypes = {
+  title: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  ranking: PropTypes.number.isRequired,
+};
 
 export default App;
